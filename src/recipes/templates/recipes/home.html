@@ -1,10 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Welcome to My Recipe App</title>
+    <link rel="stylesheet" href="{% static 'recipes/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'recipes/css/home.css' %}">
 </head>
-<body>
-    <h1>Welcome to Recipe App</h1>
-    <p>Recipes</p>
+<body class="kitchen">
+    <div class="background-image"></div>
+
+    <div class="content-container">
+        <h1>Welcome to my Recipe App</h1>
+        <!-- Temporary link -->
+        <a href="{% url 'recipes:recipe-list' %}" class="recipe-link">View Recipes</a>
+    </div>
+
+    <script src="{% static 'recipes/js/transition.js' %}"></script>
 </body>
 </html>
+

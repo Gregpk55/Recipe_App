@@ -1,0 +1,60 @@
+
+.background-image {
+    background-image: url('../images/cutboard.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 0;
+}
+
+
+h1 {
+    position: absolute; 
+    top: 20px;          
+    left: 20px;         
+    color: #ffffff;     
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.recipe-name {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.table-container {
+    position: absolute;  
+    top: 50%;            
+    left: 50%;           
+    transform: translate(-50%, -50%); 
+    width: 80%;  
+    overflow-y: auto;        
+    max-height: 80vh;
+}
+
+.content-container h1 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color:rgba(0, 0, 0, 0.1)
+}
+
+td {
+    padding: 10px;
+    border: 2px solid #000000;
+}
+
+a {
+    text-decoration: none;
+    color: #0000FF; 
+}
+
+

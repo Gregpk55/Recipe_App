@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'recipes/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'recipes/css/recipe_detail.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ object.name }}</title>
+</head>
+<body class="cutboard-bg">
+
+    <div class="page-wrapper">
+        <div class="background-image"></div>
+
+        <div class="content-container">
+            <div class="recipe-container">
+                <img src="{{ object.pic.url }}" alt="{{ object.name }}" class="recipe-image" />
+                <div class="recipe-details">
+                    <h1>{{ object.name }}</h1>
+                    <p><strong>Cooking Time:</strong> {{ object.cooking_time }} minutes</p>
+                    <p><strong>Description:</strong> {{ object.description }}</p>
+                    <p><strong>Difficulty:</strong> {{ object.difficulty }}</p>
+                </div>
+            </div>
+            
+            <!-- Temporary link back to Recipe List -->
+            <a href="{% url 'recipes:recipe-list' %}" class="recipe-link">View Recipes</a>
+        </div>
+    </div>
+
+    <script src="{% static 'recipes/js/transition.js' %}"></script>
+</body>
+</html>

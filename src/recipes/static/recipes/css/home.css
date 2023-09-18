@@ -1,0 +1,22 @@
+
+
+.content-container {
+    z-index: 1; 
+}
+
+
+
+.background-image {
+    background-image: url('../images/kitchen.jpg');
+    background-size: cover;
+}
+
+
+.recipe-link {
+    text-decoration: none;
+    color: #00f;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    margin-top: 20px;
+}

@@ -1,8 +1,12 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 class Recipe(models.Model):
-    name = models.CharField(max_length=120)
-    cooking_time = models.FloatField(help_text='In minutes')
+    name = models.CharField(max_length=120, unique=True)  
+    cooking_time = models.FloatField(
+        validators=[MinValueValidator(0.1)], 
+        help_text='In minutes.'
+    )
     ingredients = models.CharField(
         max_length=350, 
         help_text='Ingredients must be separated by commas.'
