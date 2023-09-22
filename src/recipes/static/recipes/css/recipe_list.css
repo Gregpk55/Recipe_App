@@ -1,20 +1,46 @@
-
 .background-image {
     background-image: url('../images/cutboard.jpg');
     background-size: cover;
     background-attachment: fixed;
-    z-index: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
 }
 
-
 h1 {
-    position: absolute; 
-    top: 20px;          
-    left: 20px;         
-    color: #ffffff;     
-    background-color: rgba(0, 0, 0, 0.5); 
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 8px;
+    margin-top: 20px;
+}
+
+.recipes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px; /
+}
+
+.recipe-box {
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    border: 2px solid #000;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #000;
 }
 
 .recipe-name {
@@ -23,39 +49,49 @@ h1 {
     text-align: center;
 }
 
-.table-container {
-    position: absolute;  
-    top: 50%;            
-    left: 50%;           
-    transform: translate(-50%, -50%); 
-    width: 80%;  
-    overflow-y: auto;        
-    max-height: 80vh;
-}
-
-.content-container h1 {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color:rgba(0, 0, 0, 0.1)
-}
-
-td {
-    padding: 10px;
-    border: 2px solid #000000;
-}
-
-a {
+.recipe-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: #ffffff;
     text-decoration: none;
-    color: #0000FF; 
+    border-radius: 8px;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+.recipe-link:hover {
+    background-color: #c43501;
+}
+
+.table-container {
+    margin: auto;
+    max-width: 1200px; 
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .recipe-box {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-box {
+        width: calc(100% - 20px);
+    }
 }
 
 
+.btn {
+    background-color: #ff6347;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
 
+.btn:hover {
+    background-color: #ff6347;
+}

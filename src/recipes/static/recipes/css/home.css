@@ -12,11 +12,17 @@
 }
 
 
-.recipe-link {
-    text-decoration: none;
-    color: #00f;
-    font-weight: bold;
-    font-size: 18px;
-    display: block;
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
+    width: fit-content;
+    margin: auto;
 }
+
+.btn {
+    display: inline-block;
+    margin: 20px;
+}
+
