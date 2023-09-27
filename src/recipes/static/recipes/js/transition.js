@@ -10,11 +10,24 @@ document.addEventListener('click', function(event) {
 
 document.addEventListener('submit', function(event) {
     if (event.target.tagName === "FORM") {
-        applyFadeOutTransition(event, () => {
-            event.target.submit();
-        });
+        
+        if (event.target.matches('.search-form')) {
+            
+            return;
+        }
+        
+        if (event.submitter.name === 'show_all') {
+            console.log('Show All clicked, Form Data: ', event.target.elements);
+        } else {
+            console.log('Another submit button clicked');
+            applyFadeOutTransition(event, () => {
+                event.target.submit();
+            });
+        }
     }
 });
+
+
 
 function applyFadeInTransition() {
     document.body.style.opacity = "1";

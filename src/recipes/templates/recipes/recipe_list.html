@@ -6,11 +6,24 @@
     <title>Recipes List</title>
     <link rel="stylesheet" href="{% static 'recipes/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'recipes/css/recipe_list.css' %}">
+    <link rel="stylesheet" href="{% static 'recipes/css/search.css' %}">
 </head>
 <body class="cutboard-bg">
     <div class="background-image"></div>
     <div class="content-container">
         <h1>Recipes' List</h1>
+
+         <!-- Search Form -->
+         <div class="form-container">
+            <form method="get" action="{% url 'recipes:search_recipes' %}">
+                <input type="text" name="search" placeholder="Search" value="{{ search_form.data.search }}" class="search_input" />
+                <input type="submit" value="Search" class="btn search-btn">
+            </form>
+        </div>
+        
+        
+
+
         <div class="table-container">
             <div class="recipes-grid">
                 {% for recipe in object_list %}

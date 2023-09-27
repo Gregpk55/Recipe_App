@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
     path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
+    path('logout/', logout_view, name='logout'), 
 ]
 
 if settings.DEBUG:
