@@ -18,7 +18,7 @@
                 {{ form.chart_type }}
                 {{ form.graph_data_type }}
                 <input type="submit" value="Search" class="btn search-btn">
-                <a href="?show_all=true" class="btn">Show All Recipes</a>
+                <a href="?show_all=true&graph_data_type={{ form.graph_data_type.value }}" class="btn" id="showAllBtn">Show All Recipes</a>
             </form>
         </div>
 
@@ -32,6 +32,8 @@
     </div>
     <div class="chart-container">
         {% if chart %}
+        
+
             <img src="data:image/png;base64,{{ chart }}" alt="Chart">
         {% else %}
             <p>No data available to plot the chart.</p>

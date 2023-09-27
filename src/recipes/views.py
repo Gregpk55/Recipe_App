@@ -30,7 +30,9 @@ def home(request):
 
 
 def search_recipes(request):
-    graph_data_type = request.GET.get('graph_data_type', 'cooking_time')
+    is_show_all = request.GET.get('show_all') == 'true'
+    default_graph_data_type = 'difficulty' if is_show_all else 'cooking_time'
+    graph_data_type = request.GET.get('graph_data_type', default_graph_data_type)
     chart_type = request.GET.get('chart_type', '#1') 
     form = RecipesSearchForm(initial={'graph_data_type': graph_data_type}, data=request.GET or None)
     recipes_df = None
@@ -62,7 +64,6 @@ def search_recipes(request):
             df = pd.DataFrame(data)
             recipes_df = df.to_html(index=False, classes='table table-striped')
             
-            
         if chart_data_type == 'difficulty':
             difficulty_data = {'Easy': [], 'Medium': [], 'Intermediate': [], 'Hard': []}
             
@@ -76,7 +77,7 @@ def search_recipes(request):
                 rows.append({'difficulty': difficulty, 'count': count, 'recipe_names': recipe_names})
                 
             difficulty_data_frame = pd.DataFrame(rows)
-            chart = get_chart(chart_type, difficulty_data_frame, 'difficulty')
+            chart = get_chart(chart_type, difficulty_data_frame, 'difficulty', queryset)
 
         elif chart_data_type == 'cooking_time':
             chart = get_chart(chart_type, df, 'cooking_time')
