@@ -2,6 +2,8 @@ from django.urls import reverse
 from django.test import TestCase, Client
 from django.core.exceptions import ValidationError
 from .models import Recipe
+from django.contrib.auth.models import User
+
 
 # Tests for Recipe Model
 class RecipeModelTest(TestCase):
@@ -51,17 +53,25 @@ class HomeViewTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.client.login(username='testuser', password='testpass')  
 
     def test_home_view_uses_correct_template(self):
         response = self.client.get(reverse('recipes:home'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'recipes/home.html')
 
+    def tearDown(self):
+        self.user.delete()  
+
 # Tests for List View
 class ListViewTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.client.login(username='testuser', password='testpass')  
+        
         Recipe.objects.create(
             name='Ice Water',
             cooking_time=1,
@@ -78,11 +88,17 @@ class ListViewTest(TestCase):
         response = self.client.get(reverse('recipes:recipe-list'))
         self.assertContains(response, 'Ice Water')
 
-# Tests for Details View
+    def tearDown(self):
+        self.user.delete()  
+
+#Tests for Details View
 class DetailsViewTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.client.login(username='testuser', password='testpass')  
+        
         self.recipe = Recipe.objects.create(
             name='Ice Water',
             cooking_time=1,
@@ -106,4 +122,5 @@ class DetailsViewTest(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def tearDown(self):
+        self.user.delete()  
         self.recipe.delete()

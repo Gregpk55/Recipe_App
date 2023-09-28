@@ -4,10 +4,8 @@ from .models import Recipe               #to access recipe model
 from django.contrib.auth.mixins import LoginRequiredMixin
 import pandas as pd
 from .utils import get_chart
+from django.urls import reverse
 from .forms import RecipesSearchForm
-
-
-
 
 
 
@@ -52,7 +50,7 @@ def search_recipes(request):
 
             data = [
                 {
-                    'name': recipe.name,
+                    'name': f'<a href="{reverse("recipes:recipe-detail", args=[recipe.id])}">{recipe.name}</a>',
                     'cooking_time': recipe.cooking_time,
                     'difficulty': recipe.difficulty(),
                     'ingredients': recipe.ingredients,
@@ -62,7 +60,7 @@ def search_recipes(request):
             ]
             
             df = pd.DataFrame(data)
-            recipes_df = df.to_html(index=False, classes='table table-striped')
+            recipes_df = df.to_html(index=False, classes='table table-striped', escape=False)
             
         if chart_data_type == 'difficulty':
             difficulty_data = {'Easy': [], 'Medium': [], 'Intermediate': [], 'Hard': []}
