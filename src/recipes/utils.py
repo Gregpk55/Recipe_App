@@ -30,6 +30,9 @@ def get_cooking_time_chart(chart_type, data):
         elif chart_type == '#2':  # pie chart
             plt.pie(data['cooking_time'], labels=data['name'], autopct='%1.1f%%')
         
+        if chart_type in ['#1', '#3']:
+            plt.xticks(fontsize=8, rotation=45)
+
         if chart_type != '#2':
             plt.legend()
     except Exception as e:
@@ -56,6 +59,9 @@ def get_difficulty_chart(chart_type, queryset=None):
             elif chart_type == '#3':  # Line chart
                 plt.plot(recipe_names, y, marker='o', label='Difficulty Level')
             plt.yticks(list(difficulty_levels.values()), list(difficulty_levels.keys()))
+            
+            if chart_type in ['#1', '#3']:  
+                plt.xticks(fontsize=8, rotation=45)  
         elif chart_type == '#2':  # Pie chart
             difficulty_data = get_difficulty_data()
             plt.pie(list(difficulty_data.values()), labels=difficulty_data.keys(), autopct='%1.1f%%')
@@ -68,7 +74,7 @@ def get_difficulty_chart(chart_type, queryset=None):
 
 def get_chart(chart_type, data=None, chart_data_type='cooking_time', queryset=None):
     plt.switch_backend('AGG')
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(13, 8))
     plt.clf()
 
     if chart_type not in ['#1', '#2', '#3']:

@@ -57,14 +57,20 @@ th {
 }
 
 
-
-
-
-
 .table-container {
     margin: 10px; 
     
 }
+
+.table-container .table a {
+    color: black;
+    text-decoration: none;
+}
+
+.table-container .table a:hover {
+    text-decoration: underline;
+}
+
 
 .img {
     align-self: center;

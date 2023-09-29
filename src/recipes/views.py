@@ -62,6 +62,7 @@ def search_recipes(request):
             df = pd.DataFrame(data)
             recipes_df = df.to_html(index=False, classes='table table-striped', escape=False)
             
+            
         if chart_data_type == 'difficulty':
             difficulty_data = {'Easy': [], 'Medium': [], 'Intermediate': [], 'Hard': []}
             
