@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('click', function(event) {
-    if (event.target.tagName === "A" && event.target.id !== 'showAllBtn') { 
-        // Check to avoid applying the transition twice for the "Show All" button
+    if (event.target.tagName === "A" && event.target.id !== 'showAllBtn' && event.target.target !== '_blank') { 
         applyFadeOutTransition(event, () => {
             window.location.href = event.target.href;
         });
     }
 });
+
 
 document.addEventListener('submit', function(event) {
     if (event.target.tagName === "FORM") {

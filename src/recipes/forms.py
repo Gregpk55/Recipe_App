@@ -1,4 +1,5 @@
 from django import forms
+from .models import Recipe
 
 CHART_TYPE_CHOICES = [
     ('', 'Select Chart Type'),
@@ -33,3 +34,9 @@ class RecipesSearchForm(forms.Form):
         widget=forms.Select(attrs={'class': 'graph_data_type_select'}),
         help_text='Select the type of data to plot.'
     )
+
+class RecipeCreateForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = ['name', 'ingredients', 'cooking_time', 'description', 'pic']
+        
