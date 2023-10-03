@@ -3,6 +3,9 @@ from django.views.generic import ListView, DetailView   #to display lists
 from .models import Recipe               #to access recipe model
 from .forms import RecipeCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login
+from .forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 import pandas as pd
 from .utils import get_chart
 from django.urls import reverse
@@ -102,3 +105,15 @@ def create_recipe(request):
     else:
         form = RecipeCreateForm()
     return render(request, 'recipes/create_recipe.html', {'form': form})
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('recipes:home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'auth/signup.html', {'form': form})

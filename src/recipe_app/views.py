@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 #Django authentication libraries           
 from django.contrib.auth import authenticate, login, logout
 #Django Form for authentication
-from django.contrib.auth.forms import AuthenticationForm    
-
+from django.contrib.auth.forms import AuthenticationForm   
+ 
 
 def login_view(request):                            
    error_message = None                            
