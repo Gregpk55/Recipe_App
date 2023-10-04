@@ -1,3 +1,5 @@
+# Recipe, Home, Details
+
 from django.urls import reverse
 from django.test import TestCase, Client
 from django.core.exceptions import ValidationError

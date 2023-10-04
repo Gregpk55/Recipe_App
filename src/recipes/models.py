@@ -7,7 +7,7 @@ class Recipe(models.Model):
     cooking_time = models.FloatField(validators=[MinValueValidator(0.1)])
     ingredients = models.CharField(max_length=350)
     description = models.TextField()
-    pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
+    pic = models.ImageField(upload_to='recipes', default='no_picture.jpg', blank=True, null=True)
 
     def return_ingredients_as_list(self):
         return [ingredient.strip() for ingredient in self.ingredients.split(",")]

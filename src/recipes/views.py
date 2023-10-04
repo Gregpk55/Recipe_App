@@ -30,6 +30,9 @@ class RecipeDetailView(LoginRequiredMixin,DetailView):
 def home(request):
     return render(request, 'recipes/home.html')
 
+def about_view(request):
+    return render(request, 'recipes/about.html')
+
 
 def search_recipes(request):
     is_show_all = request.GET.get('show_all') == 'true'
