@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     applyFadeInTransition();
 
     
-    var showAllBtn = document.getElementById('showAllBtn');
+    const showAllBtn = document.getElementById('showAllBtn');
     if (showAllBtn) {
         showAllBtn.addEventListener('click', function(event) {
             // Prevent the default action
             event.preventDefault();
 
             // Construct the URL with only the required parameters
-            var graphDataType = document.querySelector('select[name="graph_data_type"]').value;
-            var newUrl = '?show_all=true&graph_data_type=' + graphDataType;
+            let graphDataType = document.querySelector('select[name="graph_data_type"]').value;
+            let newUrl = '?show_all=true&graph_data_type=' + graphDataType;
 
             // Apply the transition 
             applyFadeOutTransition(event, () => {

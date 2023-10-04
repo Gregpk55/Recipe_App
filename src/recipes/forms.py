@@ -17,6 +17,10 @@ GRAPH_DATA_TYPE_CHOICES = [
 
 
 class RecipesSearchForm(forms.Form):
+    """
+    Form for searching recipes by name or ingredients and 
+    selecting the type of chart and data for visualization.
+    """
     search = forms.CharField(
         required=False,
         widget=forms.TextInput(attrs={'placeholder': 'Search recipes or ingredients', 'class': 'search_input'}),
@@ -38,12 +42,19 @@ class RecipesSearchForm(forms.Form):
     )
 
 class RecipeCreateForm(forms.ModelForm):
+    """
+    Form for creating a new recipe or editing an existing one.
+    """
     class Meta:
         model = Recipe
         fields = ['name', 'ingredients', 'cooking_time', 'description', 'pic']
         
 
 class SignUpForm(UserCreationForm):
+    """
+    Custom sign-up form for user registration.
+    Extends Django's default UserCreationForm.
+    """
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2', )

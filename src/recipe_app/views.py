@@ -5,7 +5,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm   
  
 
-def login_view(request):                            
+def login_view(request):   
+   """
+    Renders the login page and handles the user authentication process.
+    
+    Args:
+        request: HttpRequest object.
+    
+    Returns:
+        HttpResponseRedirect to 'recipes:home' if authentication is successful.
+        Otherwise, renders the login page with any error messages.
+    """                         
    error_message = None                            
    form = AuthenticationForm()                            
 
@@ -36,6 +46,15 @@ def login_view(request):
 
 
 def logout_view(request):
+    """
+    Log out the current user and redirect to home.
+    
+    Args:
+        request: HttpRequest object.
+    
+    Returns:
+        HttpResponseRedirect to 'recipes:home'.
+    """
     logout(request)
     return redirect('recipes:home')  
 

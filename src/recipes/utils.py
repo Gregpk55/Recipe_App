@@ -6,6 +6,12 @@ import re  # Importing re module
 
 
 def get_difficulty_data():
+    """
+    Fetches the count of recipes per difficulty level.
+    
+    Returns:
+        dict: A dictionary containing the count of recipes for each difficulty.
+    """
     difficulty_data = {'Easy': 0, 'Medium': 0, 'Intermediate': 0, 'Hard': 0}
     try:
         for recipe in Recipe.objects.all():
@@ -17,6 +23,13 @@ def get_difficulty_data():
 
 
 def get_cooking_time_chart(chart_type, data):
+    """
+    Generates a chart based on the cooking time for each recipe.
+
+    Args:
+        chart_type (str): The type of chart to be drawn.
+        data (DataFrame): DataFrame containing the cooking time data.
+    """
     # Apply the HTML tag stripping to the 'name' 
     data['name'] = data['name'].apply(lambda x: re.sub('<.*?>', '', x))
     try:
@@ -40,6 +53,13 @@ def get_cooking_time_chart(chart_type, data):
 
 
 def get_difficulty_chart(chart_type, queryset=None):
+    """
+    Generates a chart representing the difficulty of each recipe.
+
+    Args:
+        chart_type (str): The type of chart to be drawn.
+        queryset (QuerySet, optional): QuerySet containing recipe data. Defaults to None.
+    """
     try:
         if chart_type not in ['#1', '#2', '#3']:
             raise ValueError("Invalid chart type provided")
@@ -73,6 +93,25 @@ def get_difficulty_chart(chart_type, queryset=None):
 
 
 def get_chart(chart_type, data=None, chart_data_type='cooking_time', queryset=None):
+    """
+    Generates a chart based on the provided data and chart type.
+    
+    This function uses Matplotlib to generate charts. The generated chart is then
+    converted into a base64-encoded PNG image which can be embedded in web pages.
+    
+    Parameters:
+        chart_type (str): The type of chart ('#1' for Bar, '#2' for Pie, '#3' for Line).
+        data (DataFrame, optional): The data for the chart. Defaults to None.
+        chart_data_type (str, optional): Specifies the type of data to be plotted 
+                                         ('cooking_time' or 'difficulty'). Defaults to 'cooking_time'.
+        queryset (QuerySet, optional): An optional Django QuerySet to retrieve data from. Defaults to None.
+
+    Returns:
+        str: A base64-encoded PNG representation of the chart.
+        
+    Raises:
+        ValueError: If an unsupported chart data type is provided.
+    """
     plt.switch_backend('AGG')
     fig = plt.figure(figsize=(13, 8))
     plt.clf()

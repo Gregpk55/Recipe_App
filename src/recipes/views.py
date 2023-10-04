@@ -14,27 +14,50 @@ from .forms import RecipesSearchForm
 
 
 class RecipeListView(LoginRequiredMixin, ListView):
+    """
+    Displays a list of all recipes.
+    
+    Users must be logged in to access this view.
+    """
     model = Recipe
     template_name = 'recipes/recipe_list.html'
     context_object_name = 'recipes'
 
     def get_context_data(self, **kwargs):
+        """
+        Overriden to add the search form to the context.
+        """
         context = super().get_context_data(**kwargs)
         context['search_form'] = RecipesSearchForm(self.request.GET or None)
         return context
 
 class RecipeDetailView(LoginRequiredMixin,DetailView):
+    """
+    Displays the detailed view of a single recipe.
+    
+    Users must be logged in to access this view.
+    """
     model = Recipe
     template_name = 'recipes/recipe_detail.html'
 
 def home(request):
+    """
+    Displays the home page of the application.
+    """
     return render(request, 'recipes/home.html')
 
 def about_view(request):
+    """
+    Displays the about page with information about the project.
+    """
     return render(request, 'recipes/about.html')
 
 
 def search_recipes(request):
+    """
+    Allows users to search for recipes by name or ingredients.
+    Also provides charts for visualizing recipe data.
+    """
     is_show_all = request.GET.get('show_all') == 'true'
     default_graph_data_type = 'difficulty' if is_show_all else 'cooking_time'
     graph_data_type = request.GET.get('graph_data_type', default_graph_data_type)
@@ -97,6 +120,11 @@ def search_recipes(request):
     return render(request, 'recipes/search_recipes.html', context)
 
 def create_recipe(request):
+    """
+    Enables users to create a new recipe.
+    
+    Supports both GET (displaying the form) and POST (saving the recipe).
+    """
     if request.method == 'POST':
         print(request.FILES)
         form = RecipeCreateForm(request.POST, request.FILES)  
@@ -111,6 +139,11 @@ def create_recipe(request):
 
 
 def signup_view(request):
+    """
+    Allows new users to sign up to the application.
+    
+    Supports both GET (displaying the signup form) and POST (registering the user).
+    """
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():

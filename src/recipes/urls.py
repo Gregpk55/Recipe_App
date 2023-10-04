@@ -2,9 +2,14 @@ from django.urls import path
 from .views import create_recipe 
 from .views import home, RecipeListView, RecipeDetailView, search_recipes, signup_view, about_view
 
+# This URL configuration is specifically for the 'recipes' app.
+# It maps views to specific URL routes so that when a user navigates to a URL, 
+# the corresponding view is executed.
+
 app_name = 'recipes'
 
 urlpatterns = [
+    # Each path() call maps a URL route to a specific view.
     path('', home, name='home'),
     path('signup/', signup_view, name='signup'),  
     path('about/', about_view, name='about'),

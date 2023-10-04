@@ -23,3 +23,7 @@ Transitioning to the Django web framework means diving deeper into the Python ec
 - **Statistical Dashboards**: Equip the platform with data analytics and visualization capabilities, allowing users to gain insights into popular recipes, ingredients trends, and more.
   
 - **GitHub Integration**: Ensure the codebase is well-maintained, well-documented, and readily accessible for contributions on GitHub.
+
+## Documentation
+
+For more detailed information about how to use this project, please refer to the [documentation](src/build/html/index.html).
