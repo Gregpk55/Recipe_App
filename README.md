@@ -24,6 +24,38 @@ Transitioning to the Django web framework means diving deeper into the Python ec
   
 - **GitHub Integration**: Ensure the codebase is well-maintained, well-documented, and readily accessible for contributions on GitHub.
 
-## Documentation
+## Home
+<img src="stepsImg/home.png" width="400px"/>
 
-For more detailed information about how to use this project, please refer to the [documentation](src/build/html/index.html).
+## Create
+<img src="stepsImg/create.png" width="400px"/>
+
+## Login
+<img src="stepsImg/login.png" width="400px"/>
+
+## About
+<img src="stepsImg/about.png" width="400px"/>
+
+## Recipes
+<img src="stepsImg/recipe.png" width="400px"/>
+
+## Details
+<img src="stepsImg/details.png" width="400px"/>
+
+## Create Recipes
+<img src="stepsImg/createRecipe.png" width="400px"/>
+
+## Graph Selection
+<img src="stepsImg/graphSelect.png" width="400px"/>
+
+## Graph
+<img src="stepsImg/graph.png" width="400px"/>
+
+## Table
+<img src="stepsImg/table.png" width="400px"/>
+
+## Difficulty Graph
+<img src="stepsImg/difGraph.png" width="400px"/>
+
+## Filter Difficullty
+<img src="stepsImg/filt:difficulty.png" width="400px"/>
