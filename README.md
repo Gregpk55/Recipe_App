@@ -24,15 +24,3 @@ Transitioning to the Django web framework means diving deeper into the Python ec
   
 - **GitHub Integration**: Ensure the codebase is well-maintained, well-documented, and readily accessible for contributions on GitHub.
 
-## Home
-<img src="stepsImg/home.png" width="400px"/>
-
-## Create
-<img src="stepsImg/create.png" width="400px"/>
-
-## Login
-<img src="stepsImg/login.png" width="400px"/>
-
-## About
-<img src="stepsImg/about.png" width="400px"/>
-
